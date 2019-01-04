@@ -66,7 +66,7 @@ const createLabel = (text, id) => {
  * Function generates inputs and buttons based on number of players
  * @param  {integer} numOfPlayers - Number of players 1) for Ai 2) For two players
  */
-const inputWindow = (numOfPlayers) => {
+const createInputWindow = (numOfPlayers) => {
     // Remove existing elements on the page to add new options
     const startWindowElements = startScreenHeader.children;
     while (startWindowElements.length > 1) {
@@ -95,7 +95,6 @@ const renderApp = () => {
     startScreenHeader.appendChild(createLinkButton('Player vs Player', 'pvp'));
     startScreenHeader.appendChild(createLinkButton('Player vs Ai', 'ai'));
     jsWarrning.parentNode.removeChild(jsWarrning); // Love the logic :)
-    //jsWarrning = null; // Remove garbage colletion
 }
 
 // start app
@@ -107,17 +106,21 @@ startScreen.addEventListener('click', (e) => {
     if (e.target.nodeName === 'A') {
         if (e.target.id === 'pvp') {
             // if player vs player create window with 2 players
-            inputWindow(2);
+            createInputWindow(2);
+            // set focus to first input element
+            document.querySelector('input[type="text"]').focus();
         } else if (e.target.id === 'ai') {
             // if player vs ai create window with 1 player
-            inputWindow(1);
+            createInputWindow(1);
+            // set focus to first input element
+            document.querySelector('input[type="text"]').focus();
         } else if (e.target.id === 'startgame' || e.target.id.indexOf('lvl') > -1) {
+            const names = []; 
+            let game = {};
             // convert HTMLCollection to array
             const generatedWindowElements = Array.prototype.slice.call(startScreenHeader.children);
             // get only input elements
             const generatedInputs = generatedWindowElements.filter(input => input.nodeName === 'INPUT');
-            const names = [];
-            let game;
 
             // if there are more than one input filter all names from inputs and push them to names array
             if (generatedInputs.length > 1) {

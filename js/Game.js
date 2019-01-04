@@ -194,11 +194,11 @@ class Game {
         const p = document.createElement('p');
         const a = document.createElement('a');
 
-        winnerDiv.setAttribute('class', `screen screen-win screen-win-${winner}`);
+        winnerDiv.className = `screen screen-win screen-win-${winner}`;
         h1.textContent = 'Tic Tac Toe';
         p.textContent = message;
-        a.setAttribute('href', '#');
-        a.setAttribute('class', 'button');
+        a.href = '#';
+        a.className = 'button';
         a.textContent = 'New game';
 
         // adding event listener before append to make sure that it will ready before DOM
