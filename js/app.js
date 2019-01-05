@@ -90,7 +90,8 @@ const createInputWindow = (numOfPlayers) => {
 
     // for IE < 10 support
     // selecting first input element with autofocus attr that is not set to focus
-    document.querySelector('input[autofocus]:not(:focus)').focus();
+    const autofocus = document.querySelector('input[autofocus]:not(:focus)');
+    if (autofocus !== null) autofocus.focus();
 }
 
 /**
