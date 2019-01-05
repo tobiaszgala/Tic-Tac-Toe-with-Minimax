@@ -16,7 +16,7 @@ class Player {
         return document.getElementById(`player${this.id}`);
     }
     /**
-     * Function applies player's move
+     * Method applies player's move
      * @param  {object or integer} box - Li element (box on the board) or location of the box in virtualBoard array
      * @param  {array} boardState - Array with board state
      */

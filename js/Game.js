@@ -11,7 +11,7 @@ class Game {
         return this.players.find(player => player.active === true);
     }
     /**
-     * Function creates new player objects
+     * Method creates new player objects
      * @param  {array} names - Array with names of players
      * @param  {string} aiLevel - Difficulty level of Ai (false) by default
      * @returns - Array with players objects
@@ -26,7 +26,7 @@ class Game {
         }
     }
     /**
-     * Function switches active state of players
+     * Method switches active state of players
      */
     switchPlayers() {
         for (let player of this.players) {
@@ -34,7 +34,7 @@ class Game {
         }
     }
     /**
-     * Function resets players headers by removing active css class and setting default css class
+     * Method resets players headers by removing active css class and setting default css class
      */
     resetPlayersHeader() {
         for (let player of this.players) {
@@ -42,7 +42,7 @@ class Game {
         }
     }
     /**
-     * Function handles click event
+     * Method handles click event
      * @param  {object} e - Li element (box on the board)
      */
     handleClick(e) {
@@ -90,7 +90,7 @@ class Game {
         }
     }
     /**
-     * Function handles mouseover and mouseout event. Displayes player's token over empty spot
+     * Method handles mouseover and mouseout event. Displayes player's token over empty spot
      * @param  {object} e - Li element (box on the board)
      * @param  {boolean} out=false - False for mouseover (default) and true for mouseout
      */
@@ -106,7 +106,7 @@ class Game {
         }
     }
     /**
-     * Function checks if there is a winner
+     * Method checks if there is a winner
      * @param  {object} player - Player object
      * @returns - True of winner is found / False if not
      */
@@ -153,7 +153,7 @@ class Game {
         return false;
     }
     /**
-     * Function checks for the draw
+     * Method checks for the draw
      * @returns - True if there is a draw / False if not
      */
     checkDraw() {
@@ -166,7 +166,7 @@ class Game {
         return true;
     }
     /**
-     * Function displays game over window with winner's name or draw
+     * Method displays game over window with winner's name or draw
      * @param  {object} winner - Player who won
      * @param  {boolean} draw=false - True if there was a draw / False if not (default)
      */
@@ -182,7 +182,7 @@ class Game {
 
     }
     /**
-     * Function creates html element responsible for game over window
+     * Method creates html element responsible for game over window
      * @param  {object} winner - Player who won
      * @param  {string} message - Message to be displayed
      * @returns - Div element

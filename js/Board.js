@@ -8,7 +8,7 @@ class Board {
         this.allLiBoxes = [];
     }
     /**
-     * Function creates empty li element
+     * Method creates empty li element
      * @param  {integer} id - ID that will help in finding box on the board
      * @returns - Li element (box on the board)
      */
@@ -24,7 +24,7 @@ class Board {
         return box;
     }
     /**
-     * Function creates board by genereting ul element
+     * Method creates board by genereting ul element
      * @returns - UL element
      */
     drawHTMLBoard() {

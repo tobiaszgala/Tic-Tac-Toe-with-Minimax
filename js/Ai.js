@@ -5,7 +5,7 @@ class Ai extends Player {
         this.level = level;
     }
     /**
-     * Function generates Ai move based on level
+     * Method generates Ai move based on level
      * @param  {object} game - Main game object (We could also create static methods and access them in our class)
      * @returns - Null if error occured
      */
@@ -18,7 +18,7 @@ class Ai extends Player {
             return null;
     }
     /**
-     * Function generates based move for Ai player (depending on depth)
+     * Method generates based move for Ai player (depending on depth)
      * @param  {object} game - Main game object
      * @param  {object} player - Current player
      * @param  {array} boardState - Current board state

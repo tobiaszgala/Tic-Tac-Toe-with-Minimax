@@ -40,10 +40,11 @@ const createLinkButton = (text, id) => {
  * @param  {string} text - Placeholder for input
  * @returns - Input element
  */
-const createInput = (id) => {
+const createInput = (id, focus = false) => {
     const input = document.createElement('input');
     input.type = 'text';
     input.id = `${id}-label`;
+    input.autofocus = focus;
 
     return input;
 }
@@ -74,18 +75,22 @@ const createInputWindow = (numOfPlayers) => {
     }
 
     if (numOfPlayers === 1) {
-        startScreenHeader.appendChild(createInput('player1'));
+        startScreenHeader.appendChild(createInput('player1', true));
         startScreenHeader.appendChild(createLabel('name for player', 'player1'));
         startScreenHeader.appendChild(createLinkButton('Novice', 'lvl-novice'));
         startScreenHeader.appendChild(createLinkButton('Average', 'lvl-average'));
         startScreenHeader.appendChild(createLinkButton('Master', 'lvl-master'));
     } else if (numOfPlayers === 2) {
-        startScreenHeader.appendChild(createInput('player1'));
+        startScreenHeader.appendChild(createInput('player1', true));
         startScreenHeader.appendChild(createLabel('name for player 1', 'player1'));
         startScreenHeader.appendChild(createInput('player2'));
         startScreenHeader.appendChild(createLabel('name for player 2', 'player2'));
         startScreenHeader.appendChild(createLinkButton('Start Game', 'startgame'));
     }
+
+    // for IE < 10 support
+    // selecting first input element with autofocus attr that is not set to focus
+    document.querySelector('input[autofocus]:not(:focus)').focus();
 }
 
 /**
@@ -108,12 +113,10 @@ startScreen.addEventListener('click', (e) => {
             // if player vs player create window with 2 players
             createInputWindow(2);
             // set focus to first input element
-            document.querySelector('input[type="text"]').focus();
         } else if (e.target.id === 'ai') {
             // if player vs ai create window with 1 player
             createInputWindow(1);
             // set focus to first input element
-            document.querySelector('input[type="text"]').focus();
         } else if (e.target.id === 'startgame' || e.target.id.indexOf('lvl') > -1) {
             const names = []; 
             let game = {};
