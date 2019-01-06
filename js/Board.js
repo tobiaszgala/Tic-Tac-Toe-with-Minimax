@@ -38,4 +38,18 @@ class Board {
 
         return boxesUl;
     }
+    /**
+     * Method resets board state
+     */
+    resetBoard() {
+        // reset virtual board by setting null values in each spot
+        for (let i = 0; i < this.virtualBoard.length; i++) {
+            this.virtualBoard[i] = null;
+        }
+        // reset li elements with default class and delete style attribute for mouseover styles
+        for (let box of this.allLiBoxes) {
+            box.className = 'box';
+            box.removeAttribute('style');
+        }
+    }
 }

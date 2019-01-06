@@ -22,7 +22,7 @@ class Ai extends Player {
      * @param  {object} game - Main game object
      * @param  {object} player - Current player
      * @param  {array} boardState - Current board state
-     * @param  {integer} depth - How many board states we should omit / Less is harder
+     * @param  {integer} depth - By setting higher number we return score with less chances to win / Lower number is harder / Set 0 for the hardest level
      */
     minimax(game, player, boardState, depth) {
         // if human player wins 

@@ -88,10 +88,10 @@ const createInputWindow = (numOfPlayers) => {
         startScreenHeader.appendChild(createLinkButton('Start Game', 'startgame'));
     }
 
-    // for IE < 10 support
+    // for IE < 10
     // selecting first input element with autofocus attr that is not set to focus
-    const autofocus = document.querySelector('input[autofocus]:not(:focus)');
-    if (autofocus !== null) autofocus.focus();
+    const autoFocus = document.querySelector('input[autofocus]:not(:focus)');
+    if (autoFocus !== null) autoFocus.focus();
 }
 
 /**

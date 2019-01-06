@@ -73,7 +73,7 @@ class Game {
                         this.ready = false;
                         // pretend that ai is thinking by using setTimeout
                         setTimeout(() => {
-                            // calculate move of Ai player
+                            // calculate move for Ai player
                             const aiMove = this.activePlayer.makeAiMove(this);
                             // we want to make verify and make sure that aiMove is ready before setting game state ready to true
                             if (aiMove !== null && typeof aiMove === 'number') {
@@ -192,26 +192,48 @@ class Game {
         const header = document.createElement('header');
         const h1 = document.createElement('h1');
         const p = document.createElement('p');
-        const a = document.createElement('a');
+        const btnReplay = document.createElement('a');
+        const btnNewGame = document.createElement('a');
 
         winnerDiv.className = `screen screen-win screen-win-${winner}`;
         h1.textContent = 'Tic Tac Toe';
         p.textContent = message;
-        a.href = '#';
-        a.className = 'button';
-        a.textContent = 'New game';
+        btnReplay.href = '#';
+        btnReplay.className = 'button';
+        btnReplay.textContent = 'Replay';
+        btnNewGame.href = '#';
+        btnNewGame.className = 'button';
+        btnNewGame.textContent = 'New game';
 
         // adding event listener before append to make sure that it will ready before DOM
-        a.addEventListener('click', () => {
+        btnReplay.addEventListener('click', () => {
+            this.replayGame();
+        });
+        
+        btnNewGame.addEventListener('click', () => {
             // reload app window
             window.location.reload();
         });
 
         header.appendChild(h1);
         header.appendChild(p);
-        header.appendChild(a);
+        header.appendChild(btnReplay);
+        header.appendChild(btnNewGame);
         winnerDiv.appendChild(header);
 
         return winnerDiv;
+    }
+    /**
+     * Method allow players to replay the game without reseting game object
+     */
+    replayGame() {
+        // make sure that player 0 starts
+        if (this.activePlayer === this.players[1]) this.switchPlayers();
+        // set header of player 0 to active
+        this.activePlayer.playerHTMLHeader.className += ' active';
+        // reset board state
+        this.board.resetBoard();
+        // remove game over window
+        document.body.removeChild(document.body.lastChild);
     }
 }
