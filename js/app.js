@@ -119,13 +119,13 @@ startScreen.addEventListener('click', (e) => {
             createInputWindow(1);
             // set focus to first input element
         } else if (e.target.id === 'startgame' || e.target.id.indexOf('lvl') > -1) {
-            const names = []; 
+            const names = [], 
+                  generatedInputs = []; 
             let game = {};
-            // convert HTMLCollection to array
-            const generatedWindowElements = Array.prototype.slice.call(startScreenHeader.children);
             // get only input elements
-            const generatedInputs = generatedWindowElements.filter(input => input.nodeName === 'INPUT');
-
+            for (let el of startScreenHeader.children) {
+                if (el.nodeName === 'INPUT') generatedInputs.push(el);
+            }
             // if there are more than one input filter all names from inputs and push them to names array
             if (generatedInputs.length > 1) {
                 for (let i = 0; i < generatedInputs.length; i++) {
